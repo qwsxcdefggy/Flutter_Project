@@ -1,0 +1,43 @@
+name: flutter_project2
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+#  sdk: ^3.7.2
+  sdk: '>=3.7.0 <4.0.0'  # 推荐使用当前 Flutter 版本的 Dart SDK
+  flutter: '>=3.16.0'    # 可选，添加 Flutter 版本约束
+
+dependencies:
+  flutter:
+    sdk: flutter
+  fl_chart: ^0.71.0  # Chart 太低yped，需要升级
+  window_manager: ^0.3.0
+  flutter_staggered_grid_view: ^0.7.0
+  url_launcher: ^6.1.11  # 检查最新版本   打开网页
+  cupertino_icons: ^1.0.8   #打开网页
+  http: ^0.13.5 # 用于HTTP请求
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  intl: ^0.18.0
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Arial
+      fonts:
+        - asset: assets/arial.ttf
+    - family: SimKai  # 为中文单独指定字体家族
+      fonts:
+        - asset: assets/simkai.ttf
+
+  assets:
+    - assets/sample.txt
+
+

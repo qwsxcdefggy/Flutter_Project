@@ -1,0 +1,33 @@
+initState：出生时初始化
+dispose：死亡时清理
+didChangeDependencies：依赖变时响应
+didUpdateWidget：配置变时对比
+build：画界面
+
+ListView     文本+图标+文本
+Scaffold     导航栏+主体内容+底部栏
+Scaffold 的主要功能
+Scaffold 提供了一系列常用的 UI 组件，开发者可以根据需求自由组合，主要包括：
+AppBar（应用栏）：
+位于页面顶部，用于显示标题、导航按钮或操作按钮。
+可以通过 title 属性设置标题，通过 actions 属性添加右侧操作按钮。
+Body（主体内容）：
+页面主体部分，用于显示应用的主要内容。
+通常是一个 Widget，可以是 Container、ListView、Column 等。
+FloatingActionButton（悬浮按钮）：
+一个圆形按钮，通常悬浮在页面右下角，用于执行主要操作（如“添加”或“新建”）。
+可以通过 onPressed 属性设置点击事件。
+Drawer（侧边抽屉）：
+从左侧滑出的侧边栏，通常用于显示导航菜单。
+可以通过 Scaffold.of(context).openDrawer() 方法手动打开。
+BottomNavigationBar（底部导航栏）：
+位于页面底部，用于实现多个页面之间的切换。
+可以通过 currentIndex 属性设置当前选中的索引，通过 onTap 属性处理点击事件。
+BottomSheet（底部弹出视图）：
+一个从底部弹出的视图，用于显示临时内容或操作。
+可以通过 showBottomSheet 方法显示。
+PersistentFooterButtons（底部固定按钮）：
+位于页面底部的一组固定按钮，通常用于显示一些持久的操作按钮。
+
+底部导航栏添加了 mounted 检查：
+防止在组件卸载时调用 setState
