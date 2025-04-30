@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project2/page/BottomNavigationScreen.dart';
 import 'package:flutter_project2/page/CardLayoutScreen.dart';
+import 'package:flutter_project2/page/Chart2_.dart';
+import 'package:flutter_project2/page/Chart3_.dart';
+import 'package:flutter_project2/page/Chart4_.dart';
+import 'package:flutter_project2/page/Chart5_.dart';
 import 'package:flutter_project2/page/Chart_.dart';
 import 'package:flutter_project2/page/Combine.dart';
 import 'package:flutter_project2/page/GridLayoutScreen.dart';
@@ -51,6 +55,10 @@ class MyApp extends StatelessWidget {
         '/combine':(content)=> Combine(),
         '/second':(content)=> Second(),
         '/chart_':(content)=>  Chart_(),
+        '/chart2_':(content)=> Chart2_(),
+        '/chart3_':(content)=> Chart3_(),
+        '/chart4_':(content)=> Chart4_(),
+        '/chart5_':(content)=> Chart5_(),
         '/web1':(content)=>  Web1(),
       },
       initialRoute: '/', // 初始路由

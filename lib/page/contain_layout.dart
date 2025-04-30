@@ -143,8 +143,20 @@ class _ContainLayoutState extends State<ContainLayout> {
                     ),
                     _buildCustomButton(
                       Icons.widgets,
-                      'to combine',
-                      () => Navigator.pushNamed(context, '/combine'),
+                      'to Chart2',
+                      () => Navigator.pushNamed(context, '/chart2_'),
+                    ),     _buildCustomButton(
+                      Icons.widgets,
+                      'to Chart3',
+                      () => Navigator.pushNamed(context, '/chart3_'),
+                    ), _buildCustomButton(
+                      Icons.widgets,
+                      'to Chart4',
+                      () => Navigator.pushNamed(context, '/chart4_'),
+                    ), _buildCustomButton(
+                      Icons.widgets,
+                      'to Chart5',
+                      () => Navigator.pushNamed(context, '/chart5_'),
                     ),
                     _buildCustomButton(
                       Icons.widgets,

@@ -9,6 +9,12 @@ class SidebarLayout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sidebar Layout'),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
       ),
       drawer: Drawer(
         child: ListView(
@@ -18,12 +24,38 @@ class SidebarLayout extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text(
-                'Sidebar Header',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Sidebar Header',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () =>Navigator.popUntil(context, ModalRoute.withName('/'))
+                      // Navigator.pushNamed(context, '/second')
+                      ,
+                    child: Row(
+                      children: [
+                        Icon(Icons.arrow_back, color: Colors.white),
+                        SizedBox(width: 8),
+                        Text('返回', style: TextStyle(color: Colors.white)),
+                      ],
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white30,
+                      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    ),
+                  ),
+                ],
               ),
             ),
             ListTile(
@@ -34,10 +66,10 @@ class SidebarLayout extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.image), // 使用一个图片图标来表示这个选项
+              leading: Icon(Icons.image),
               title: Text('Show Random Image'),
               onTap: () {
-                Navigator.pop(context); // 先关闭抽屉
+                Navigator.pop(context); // Close the drawer
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => RandomImagePage()),
@@ -51,7 +83,6 @@ class SidebarLayout extends StatelessWidget {
                 Navigator.pop(context); // Close the drawer
               },
             ),
-            // Add more ListTile items as needed
           ],
         ),
       ),
@@ -76,9 +107,40 @@ class RandomImagePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Random Image'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // 返回上一页
+          },
+        ),
       ),
       body: Center(
-        child: Image.network(imageUrl),
+        child: Image.network(
+          imageUrl,
+          loadingBuilder: (context, child, loadingProgress) {
+            if (loadingProgress == null) return child;
+            return Center(
+              child: CircularProgressIndicator(
+                value: loadingProgress.expectedTotalBytes != null
+                    ? loadingProgress.cumulativeBytesLoaded /
+                    loadingProgress.expectedTotalBytes!
+                    : null,
+              ),
+            );
+          },
+          errorBuilder: (context, error, stackTrace) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.error, color: Colors.red, size: 50),
+                  SizedBox(height: 10),
+                  Text('Failed to load image'),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
