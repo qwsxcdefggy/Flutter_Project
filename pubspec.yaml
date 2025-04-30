@@ -17,7 +17,7 @@ dependencies:
   fl_chart: ^0.71.0  # Chart 太低yped，需要升级
   window_manager: ^0.3.0
   flutter_staggered_grid_view: ^0.7.0
-  url_launcher: ^6.1.11  # 检查最新版本   打开网页
+  url_launcher: ^6.3.1  # 检查最新版本   打开网页
   cupertino_icons: ^1.0.8   #打开网页
   http: ^0.13.5 # 用于HTTP请求
 
